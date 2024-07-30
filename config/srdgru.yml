@@ -3,7 +3,7 @@ data:
 #  file: data/pems(sample).h5
   file: data/pems-bay.h5
   window: 12
-  horizon: 12
+  horizon: 6
   train_ratio: 0.7
   test_ratio: 0.1
   raw_label: False

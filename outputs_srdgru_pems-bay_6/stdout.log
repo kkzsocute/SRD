@@ -1,0 +1,224 @@
+2024-07-30 00:21:04,374 - utilsd.experiment - INFO - Config: {"data": {"file": "data/pems-bay.h5", "window": 12, "horizon": 6, "train_ratio": 0.7, "test_ratio": 0.1, "normalize": 2, "last_label": false, "raw_label": false, "dataset_name": null}, "network": {"spatial_embed": true, "temporal_embed": true, "temporal_emb_type": "learn", "hidden_size": 8, "dropout": 0.1, "cell_type": "GRU", "propalpha": 0.05, "gcn_depth": 2, "gcn": true, "dyna": false, "num_layers": 3, "is_bidir": true, "max_length": 100, "subgraph_size": 20, "node_dim": 16, "tanhalpha": 3, "out_size": 4, "distance": "fro", "input_size": null, "weight_file": null}, "model": {"task": "regression", "optimizer": "Adam", "lr": 0.001, "weight_decay": 0.0, "loss_fn": "mse", "metrics": ["mse", "mae", "corr", "rrse", "r2"], "observe": "mse", "lower_is_better": true, "max_epoches": 1000, "batch_size": 128, "network": null, "output_dir": null, "checkpoint_dir": null, "early_stop": 30, "out_ranges": null, "model_path": null, "alpha1": 1.0, "alpha2": 1.0, "out_size": 1, "aggregate": true}, "runtime": {"seed": 42, "output_dir": "outputs", "checkpoint_dir": "outputs/checkpoints", "tb_log_dir": "outputs/tb", "debug": false, "use_cuda": true}}
+2024-07-30 00:21:04,375 - utilsd.experiment - INFO - Config (expanded):
+{'data': {'dataset_name': None,
+          'file': 'data/pems-bay.h5',
+          'horizon': 6,
+          'last_label': False,
+          'normalize': 2,
+          'raw_label': False,
+          'test_ratio': 0.1,
+          'train_ratio': 0.7,
+          'window': 12},
+ 'model': {'aggregate': True,
+           'alpha1': 1.0,
+           'alpha2': 1.0,
+           'batch_size': 128,
+           'checkpoint_dir': None,
+           'early_stop': 30,
+           'loss_fn': 'mse',
+           'lower_is_better': True,
+           'lr': 0.001,
+           'max_epoches': 1000,
+           'metrics': ['mse', 'mae', 'corr', 'rrse', 'r2'],
+           'model_path': None,
+           'network': None,
+           'observe': 'mse',
+           'optimizer': 'Adam',
+           'out_ranges': None,
+           'out_size': 1,
+           'output_dir': None,
+           'task': 'regression',
+           'weight_decay': 0.0},
+ 'network': {'cell_type': 'GRU',
+             'distance': 'fro',
+             'dropout': 0.1,
+             'dyna': False,
+             'gcn': True,
+             'gcn_depth': 2,
+             'hidden_size': 8,
+             'input_size': None,
+             'is_bidir': True,
+             'max_length': 100,
+             'node_dim': 16,
+             'num_layers': 3,
+             'out_size': 4,
+             'propalpha': 0.05,
+             'spatial_embed': True,
+             'subgraph_size': 20,
+             'tanhalpha': 3,
+             'temporal_emb_type': 'learn',
+             'temporal_embed': True,
+             'weight_file': None},
+ 'runtime': {'checkpoint_dir': PosixPath('outputs/checkpoints'),
+             'debug': False,
+             'output_dir': PosixPath('outputs'),
+             'seed': 42,
+             'tb_log_dir': PosixPath('outputs/tb'),
+             'use_cuda': True}}
+2024-07-30 00:21:04,395 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2024-07-30 00:21:04,395 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2024-07-30 00:23:52,511 - utilsd.earlystop - INFO - Earlystop hit best record: 30.389463424682617
+2024-07-30 00:26:28,432 - utilsd.earlystop - INFO - Earlystop hit best record: 25.58384895324707
+2024-07-30 00:29:14,445 - utilsd.earlystop - INFO - Earlystop hit best record: 23.674360275268555
+2024-07-30 00:31:52,416 - utilsd.earlystop - INFO - Earlystop hit best record: 22.16900062561035
+2024-07-30 00:34:26,268 - utilsd.earlystop - INFO - Earlystop hit best record: 21.024606704711914
+2024-07-30 00:37:00,197 - utilsd.earlystop - INFO - Earlystop hit best record: 20.601200103759766
+2024-07-30 00:39:42,059 - utilsd.earlystop - INFO - Earlystop hit best record: 19.112417221069336
+2024-07-30 00:42:18,742 - utilsd.earlystop - INFO - Earlystop hit best record: 19.07546043395996
+2024-07-30 00:44:53,160 - utilsd.earlystop - INFO - Earlystop hit best record: 17.74810028076172
+2024-07-30 00:47:34,733 - utilsd.earlystop - INFO - Earlystop hit best record: 17.42115020751953
+2024-07-30 00:50:17,925 - utilsd.earlystop - INFO - Earlystop hit best record: 17.14461898803711
+2024-07-30 00:53:02,123 - utilsd.earlystop - INFO - Earlystop hit best record: 16.616342544555664
+2024-07-30 00:55:42,197 - utilsd.earlystop - INFO - Earlystop hit best record: 15.860998153686523
+2024-07-30 00:58:19,674 - utilsd.earlystop - INFO - Earlystop hit best record: 15.24569320678711
+2024-07-30 01:00:53,270 - utilsd.earlystop - INFO - Earlystop hit best record: 14.709614753723145
+2024-07-30 01:03:25,594 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 01:06:04,990 - utilsd.earlystop - INFO - Earlystop hit best record: 14.09891128540039
+2024-07-30 01:08:41,716 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 01:11:19,740 - utilsd.earlystop - INFO - Earlystop hit best record: 13.46193790435791
+2024-07-30 01:13:59,748 - utilsd.earlystop - INFO - Earlystop hit best record: 13.29737377166748
+2024-07-30 01:16:31,943 - utilsd.earlystop - INFO - Earlystop hit best record: 13.017894744873047
+2024-07-30 01:19:09,531 - utilsd.earlystop - INFO - Earlystop hit best record: 12.985550880432129
+2024-07-30 01:21:51,687 - utilsd.earlystop - INFO - Earlystop hit best record: 12.806665420532227
+2024-07-30 01:24:35,945 - utilsd.earlystop - INFO - Earlystop hit best record: 12.788884162902832
+2024-07-30 01:27:15,239 - utilsd.earlystop - INFO - Earlystop hit best record: 12.554487228393555
+2024-07-30 01:29:52,088 - utilsd.earlystop - INFO - Earlystop hit best record: 12.459761619567871
+2024-07-30 01:32:33,102 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 01:35:10,859 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 01:37:47,730 - utilsd.earlystop - INFO - Earlystop hit best record: 12.28534984588623
+2024-07-30 01:40:28,926 - utilsd.earlystop - INFO - Earlystop hit best record: 12.12788200378418
+2024-07-30 01:43:06,675 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 01:45:45,456 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 01:48:31,273 - utilsd.earlystop - INFO - Earlystop hit best record: 11.995683670043945
+2024-07-30 01:51:06,874 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 01:53:44,368 - utilsd.earlystop - INFO - Earlystop hit best record: 11.95497989654541
+2024-07-30 01:56:21,551 - utilsd.earlystop - INFO - Earlystop hit best record: 11.925209045410156
+2024-07-30 01:58:57,429 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 02:01:34,680 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 02:04:14,623 - utilsd.earlystop - INFO - Earlystop hit best record: 11.912322998046875
+2024-07-30 02:06:49,866 - utilsd.earlystop - INFO - Earlystop hit best record: 11.7449951171875
+2024-07-30 02:09:23,793 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 02:12:06,974 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 02:14:51,400 - utilsd.earlystop - INFO - Earlystop hit best record: 11.642289161682129
+2024-07-30 02:17:29,344 - utilsd.earlystop - INFO - Earlystop hit best record: 11.540563583374023
+2024-07-30 02:20:05,043 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 02:22:39,752 - utilsd.earlystop - INFO - Earlystop hit best record: 11.515395164489746
+2024-07-30 02:25:15,501 - utilsd.earlystop - INFO - Earlystop hit best record: 11.478845596313477
+2024-07-30 02:27:57,674 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 02:30:39,549 - utilsd.earlystop - INFO - Earlystop hit best record: 11.39554500579834
+2024-07-30 02:33:17,907 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 02:35:55,435 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 02:38:34,240 - utilsd.earlystop - INFO - Earlystop hit best record: 11.369662284851074
+2024-07-30 02:41:17,155 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 02:44:02,302 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 02:46:37,037 - utilsd.earlystop - INFO - Earlystop hit best record: 11.352251052856445
+2024-07-30 02:49:19,802 - utilsd.earlystop - INFO - Earlystop hit best record: 11.295625686645508
+2024-07-30 02:51:57,238 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 02:54:28,552 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 02:57:02,707 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 02:59:38,229 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+2024-07-30 03:02:14,494 - utilsd.earlystop - INFO - Earlystop hit best record: 11.197836875915527
+2024-07-30 03:04:57,835 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 03:07:34,248 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 03:10:14,531 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 03:12:53,970 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+2024-07-30 03:15:31,108 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+2024-07-30 03:18:06,644 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+2024-07-30 03:20:45,291 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+2024-07-30 03:23:19,565 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+2024-07-30 03:26:01,972 - utilsd.earlystop - INFO - Earlystop patience 9 out of 30
+2024-07-30 03:28:41,965 - utilsd.earlystop - INFO - Earlystop patience 10 out of 30
+2024-07-30 03:31:21,297 - utilsd.earlystop - INFO - Earlystop patience 11 out of 30
+2024-07-30 03:34:00,034 - utilsd.earlystop - INFO - Earlystop patience 12 out of 30
+2024-07-30 03:36:44,421 - utilsd.earlystop - INFO - Earlystop patience 13 out of 30
+2024-07-30 03:39:26,958 - utilsd.earlystop - INFO - Earlystop patience 14 out of 30
+2024-07-30 03:41:39,934 - utilsd.earlystop - INFO - Earlystop patience 15 out of 30
+2024-07-30 03:44:18,676 - utilsd.earlystop - INFO - Earlystop patience 16 out of 30
+2024-07-30 03:47:03,305 - utilsd.earlystop - INFO - Earlystop patience 17 out of 30
+2024-07-30 03:49:39,966 - utilsd.earlystop - INFO - Earlystop patience 18 out of 30
+2024-07-30 03:52:19,539 - utilsd.earlystop - INFO - Earlystop patience 19 out of 30
+2024-07-30 03:55:02,226 - utilsd.earlystop - INFO - Earlystop patience 20 out of 30
+2024-07-30 03:57:40,533 - utilsd.earlystop - INFO - Earlystop patience 21 out of 30
+2024-07-30 04:00:25,496 - utilsd.earlystop - INFO - Earlystop patience 22 out of 30
+2024-07-30 04:03:08,547 - utilsd.earlystop - INFO - Earlystop patience 23 out of 30
+2024-07-30 04:05:48,823 - utilsd.earlystop - INFO - Earlystop patience 24 out of 30
+2024-07-30 04:08:33,513 - utilsd.earlystop - INFO - Earlystop patience 25 out of 30
+2024-07-30 04:11:20,592 - utilsd.earlystop - INFO - Earlystop hit best record: 11.18648910522461
+2024-07-30 04:14:00,935 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 04:16:39,238 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 04:19:22,795 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 04:21:54,731 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+2024-07-30 04:24:32,278 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+2024-07-30 04:27:09,599 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+2024-07-30 04:29:47,726 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+2024-07-30 04:32:24,217 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+2024-07-30 04:34:58,582 - utilsd.earlystop - INFO - Earlystop patience 9 out of 30
+2024-07-30 04:37:33,682 - utilsd.earlystop - INFO - Earlystop patience 10 out of 30
+2024-07-30 04:40:16,007 - utilsd.earlystop - INFO - Earlystop hit best record: 11.134247779846191
+2024-07-30 04:42:49,074 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 04:45:25,040 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 04:48:01,141 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 04:50:38,789 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+2024-07-30 04:53:16,000 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+2024-07-30 04:55:49,011 - utilsd.earlystop - INFO - Earlystop hit best record: 11.053141593933105
+2024-07-30 04:58:23,575 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 05:00:49,968 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 05:03:18,217 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 05:05:44,089 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+2024-07-30 05:08:16,828 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+2024-07-30 05:10:48,643 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+2024-07-30 05:13:20,576 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+2024-07-30 05:15:36,181 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+2024-07-30 05:18:04,049 - utilsd.earlystop - INFO - Earlystop hit best record: 11.020951271057129
+2024-07-30 05:20:32,226 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 05:23:05,047 - utilsd.earlystop - INFO - Earlystop hit best record: 10.963638305664062
+2024-07-30 05:25:36,010 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 05:28:04,382 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 05:30:33,476 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 05:33:08,015 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+2024-07-30 05:35:40,942 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+2024-07-30 05:38:16,542 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+2024-07-30 05:40:48,296 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+2024-07-30 05:43:26,259 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+2024-07-30 05:46:00,615 - utilsd.earlystop - INFO - Earlystop patience 9 out of 30
+2024-07-30 05:48:33,865 - utilsd.earlystop - INFO - Earlystop patience 10 out of 30
+2024-07-30 05:51:05,531 - utilsd.earlystop - INFO - Earlystop patience 11 out of 30
+2024-07-30 05:53:43,371 - utilsd.earlystop - INFO - Earlystop patience 12 out of 30
+2024-07-30 05:56:14,040 - utilsd.earlystop - INFO - Earlystop patience 13 out of 30
+2024-07-30 05:58:47,733 - utilsd.earlystop - INFO - Earlystop patience 14 out of 30
+2024-07-30 06:01:24,874 - utilsd.earlystop - INFO - Earlystop hit best record: 10.919118881225586
+2024-07-30 06:03:58,843 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 06:06:27,084 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 06:09:00,354 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 06:11:32,908 - utilsd.earlystop - INFO - Earlystop hit best record: 10.867993354797363
+2024-07-30 06:14:05,289 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+2024-07-30 06:16:31,413 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+2024-07-30 06:18:57,403 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+2024-07-30 06:21:39,707 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+2024-07-30 06:24:13,970 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+2024-07-30 06:26:36,083 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+2024-07-30 06:29:05,256 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+2024-07-30 06:31:33,337 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+2024-07-30 06:34:01,803 - utilsd.earlystop - INFO - Earlystop patience 9 out of 30
+2024-07-30 06:36:29,402 - utilsd.earlystop - INFO - Earlystop patience 10 out of 30
+2024-07-30 06:39:01,250 - utilsd.earlystop - INFO - Earlystop patience 11 out of 30
+2024-07-30 06:41:34,367 - utilsd.earlystop - INFO - Earlystop patience 12 out of 30
+2024-07-30 06:44:11,707 - utilsd.earlystop - INFO - Earlystop patience 13 out of 30
+2024-07-30 06:46:45,676 - utilsd.earlystop - INFO - Earlystop patience 14 out of 30
+2024-07-30 06:49:22,502 - utilsd.earlystop - INFO - Earlystop patience 15 out of 30
+2024-07-30 06:52:08,725 - utilsd.earlystop - INFO - Earlystop patience 16 out of 30
+2024-07-30 06:54:36,744 - utilsd.earlystop - INFO - Earlystop patience 17 out of 30
+2024-07-30 06:57:14,088 - utilsd.earlystop - INFO - Earlystop patience 18 out of 30
+2024-07-30 06:59:37,149 - utilsd.earlystop - INFO - Earlystop patience 19 out of 30
+2024-07-30 07:02:05,316 - utilsd.earlystop - INFO - Earlystop patience 20 out of 30
+2024-07-30 07:04:39,373 - utilsd.earlystop - INFO - Earlystop patience 21 out of 30
+2024-07-30 07:07:09,077 - utilsd.earlystop - INFO - Earlystop patience 22 out of 30
+2024-07-30 07:09:32,685 - utilsd.earlystop - INFO - Earlystop patience 23 out of 30
+2024-07-30 07:12:04,026 - utilsd.earlystop - INFO - Earlystop patience 24 out of 30
+2024-07-30 07:14:34,528 - utilsd.earlystop - INFO - Earlystop patience 25 out of 30
+2024-07-30 07:17:03,944 - utilsd.earlystop - INFO - Earlystop patience 26 out of 30
+2024-07-30 07:19:38,560 - utilsd.earlystop - INFO - Earlystop patience 27 out of 30
+2024-07-30 07:22:08,490 - utilsd.earlystop - INFO - Earlystop patience 28 out of 30
+2024-07-30 07:24:35,363 - utilsd.earlystop - INFO - Earlystop patience 29 out of 30
+2024-07-30 07:27:05,017 - utilsd.earlystop - INFO - Earlystop patience 30 out of 30
+2024-07-30 07:29:40,936 - utilsd.earlystop - INFO - Earlystop running out of patience (30)
