@@ -1,0 +1,395 @@
+nohup: ignoring input
+2024-07-31 13:07:53.555625: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-07-31 13:07:53.632249: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-07-31 13:07:54,116 - utilsd.experiment - INFO - Config: {"data": {"file": "data/metr-la.h5", "window": 12, "horizon": 6, "train_ratio": 0.7, "test_ratio": 0.1, "normalize": 2, "last_label": false, "raw_label": false, "dataset_name": null}, "network": {"use_inception": true, "buildA_true": true, "gcn_depth": 2, "predefined_A": null, "static_feat": null, "dropout": 0.3, "subgraph_size": 20, "node_dim": 16, "dilation_exponential": 2, "conv_channels": 8, "residual_channels": 8, "skip_channels": 8, "end_channels": 8, "in_dim": 1, "out_dim": 1, "layers": 3, "propalpha": 0.05, "tanhalpha": 3, "skip": true, "residual": true, "gate": true, "pad": true, "layer_norm_affline": true, "input_size": null, "max_length": null, "weight_file": null}, "model": {"task": "regression", "optimizer": "Adam", "lr": 0.001, "weight_decay": 0.0, "loss_fn": "mse", "metrics": ["mse", "mae", "corr", "rrse", "r2"], "observe": "mse", "lower_is_better": true, "max_epoches": 1000, "batch_size": 128, "network": null, "output_dir": null, "checkpoint_dir": null, "early_stop": 30, "out_ranges": null, "model_path": null, "alpha1": 1.0, "alpha2": 1.0, "out_size": 1, "aggregate": true}, "runtime": {"seed": 42, "output_dir": "outputs", "checkpoint_dir": "outputs/checkpoints", "tb_log_dir": "outputs/tb", "debug": false, "use_cuda": true}}
+2024-07-31 13:07:54,117 - utilsd.experiment - INFO - Config (expanded):
+{'data': {'dataset_name': None,
+          'file': 'data/metr-la.h5',
+          'horizon': 6,
+          'last_label': False,
+          'normalize': 2,
+          'raw_label': False,
+          'test_ratio': 0.1,
+          'train_ratio': 0.7,
+          'window': 12},
+ 'model': {'aggregate': True,
+           'alpha1': 1.0,
+           'alpha2': 1.0,
+           'batch_size': 128,
+           'checkpoint_dir': None,
+           'early_stop': 30,
+           'loss_fn': 'mse',
+           'lower_is_better': True,
+           'lr': 0.001,
+           'max_epoches': 1000,
+           'metrics': ['mse', 'mae', 'corr', 'rrse', 'r2'],
+           'model_path': None,
+           'network': None,
+           'observe': 'mse',
+           'optimizer': 'Adam',
+           'out_ranges': None,
+           'out_size': 1,
+           'output_dir': None,
+           'task': 'regression',
+           'weight_decay': 0.0},
+ 'network': {'buildA_true': True,
+             'conv_channels': 8,
+             'dilation_exponential': 2,
+             'dropout': 0.3,
+             'end_channels': 8,
+             'gate': True,
+             'gcn_depth': 2,
+             'in_dim': 1,
+             'input_size': None,
+             'layer_norm_affline': True,
+             'layers': 3,
+             'max_length': None,
+             'node_dim': 16,
+             'out_dim': 1,
+             'pad': True,
+             'predefined_A': None,
+             'propalpha': 0.05,
+             'residual': True,
+             'residual_channels': 8,
+             'skip': True,
+             'skip_channels': 8,
+             'static_feat': None,
+             'subgraph_size': 20,
+             'tanhalpha': 3,
+             'use_inception': True,
+             'weight_file': None},
+ 'runtime': {'checkpoint_dir': PosixPath('outputs/checkpoints'),
+             'debug': False,
+             'output_dir': PosixPath('outputs'),
+             'seed': 42,
+             'tb_log_dir': PosixPath('outputs/tb'),
+             'use_cuda': True}}
+2024-07-31 13:07:54,138 - numexpr.utils - INFO - Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2024-07-31 13:07:54,138 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+Using GPU
+No checkpoint found in outputs/checkpoints forecaster.model.base
+0	'train'	Time:248.28	MetricT: 5.46	mse: 289.2664	mae: 10.4438	corr: -0.4198	rrse: 0.9146	r2: 0.2387	loss: 0.1849	minmax_loss: 0.0003	dynamic_loss: 0.0627	static_loss: 0.0630	final_loss: 0.0592	2024-07-31 13:12:12.126226
+0	'valid'	Time:48.87	MetricT: 1.85	mse: 152.8235	mae: 6.8440	corr: -0.6465	rrse: 0.6495	r2: 0.6230	loss: 0.0962	minmax_loss: 0.0002	dynamic_loss: 0.0333	static_loss: 0.0317	final_loss: 0.0313	2024-07-31 13:13:02.850791
+2024-07-31 13:13:02,851 - utilsd.earlystop - INFO - Earlystop hit best record: 152.82350158691406
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+1	'train'	Time:239.41	MetricT: 5.52	mse: 111.3783	mae: 6.1627	corr: -0.6647	rrse: 0.5675	r2: 0.7069	loss: 0.0708	minmax_loss: 0.0002	dynamic_loss: 0.0245	static_loss: 0.0235	final_loss: 0.0228	2024-07-31 13:17:07.939758
+1	'valid'	Time:58.26	MetricT: 1.95	mse: 129.3157	mae: 6.1275	corr: -0.6914	rrse: 0.5975	r2: 0.6810	loss: 0.0816	minmax_loss: 0.0002	dynamic_loss: 0.0279	static_loss: 0.0273	final_loss: 0.0264	2024-07-31 13:18:08.151303
+2024-07-31 13:18:08,152 - utilsd.earlystop - INFO - Earlystop hit best record: 129.31565856933594
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+2	'train'	Time:242.05	MetricT: 7.16	mse: 91.8820	mae: 5.4249	corr: -0.7006	rrse: 0.5155	r2: 0.7582	loss: 0.0582	minmax_loss: 0.0002	dynamic_loss: 0.0198	static_loss: 0.0196	final_loss: 0.0188	2024-07-31 13:22:17.536349
+2	'valid'	Time:48.82	MetricT: 1.37	mse: 112.5197	mae: 5.7054	corr: -0.7116	rrse: 0.5573	r2: 0.7224	loss: 0.0708	minmax_loss: 0.0002	dynamic_loss: 0.0240	static_loss: 0.0237	final_loss: 0.0230	2024-07-31 13:23:07.737229
+2024-07-31 13:23:07,738 - utilsd.earlystop - INFO - Earlystop hit best record: 112.51966857910156
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+3	'train'	Time:245.66	MetricT: 5.57	mse: 84.3620	mae: 5.0763	corr: -0.7160	rrse: 0.4939	r2: 0.7780	loss: 0.0531	minmax_loss: 0.0002	dynamic_loss: 0.0179	static_loss: 0.0179	final_loss: 0.0172	2024-07-31 13:27:19.171327
+3	'valid'	Time:55.79	MetricT: 1.60	mse: 107.5253	mae: 5.6330	corr: -0.7224	rrse: 0.5448	r2: 0.7347	loss: 0.0673	minmax_loss: 0.0003	dynamic_loss: 0.0227	static_loss: 0.0226	final_loss: 0.0220	2024-07-31 13:28:16.562574
+2024-07-31 13:28:16,563 - utilsd.earlystop - INFO - Earlystop hit best record: 107.52533721923828
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+4	'train'	Time:236.98	MetricT: 5.57	mse: 80.8548	mae: 4.9237	corr: -0.7226	rrse: 0.4835	r2: 0.7872	loss: 0.0506	minmax_loss: 0.0003	dynamic_loss: 0.0170	static_loss: 0.0171	final_loss: 0.0165	2024-07-31 13:32:19.300503
+4	'valid'	Time:50.91	MetricT: 1.45	mse: 104.0078	mae: 5.3434	corr: -0.7270	rrse: 0.5358	r2: 0.7434	loss: 0.0649	minmax_loss: 0.0002	dynamic_loss: 0.0218	static_loss: 0.0219	final_loss: 0.0213	2024-07-31 13:33:11.667381
+2024-07-31 13:33:11,668 - utilsd.earlystop - INFO - Earlystop hit best record: 104.00775146484375
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+5	'train'	Time:232.52	MetricT: 5.47	mse: 78.0645	mae: 4.7741	corr: -0.7305	rrse: 0.4751	r2: 0.7945	loss: 0.0487	minmax_loss: 0.0002	dynamic_loss: 0.0163	static_loss: 0.0165	final_loss: 0.0160	2024-07-31 13:37:09.834141
+5	'valid'	Time:46.78	MetricT: 2.30	mse: 101.6171	mae: 5.3831	corr: -0.7301	rrse: 0.5297	r2: 0.7493	loss: 0.0634	minmax_loss: 0.0003	dynamic_loss: 0.0212	static_loss: 0.0213	final_loss: 0.0208	2024-07-31 13:37:58.917070
+2024-07-31 13:37:58,918 - utilsd.earlystop - INFO - Earlystop hit best record: 101.61709594726562
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+6	'train'	Time:239.22	MetricT: 5.88	mse: 77.0308	mae: 4.7150	corr: -0.7329	rrse: 0.4720	r2: 0.7973	loss: 0.0480	minmax_loss: 0.0002	dynamic_loss: 0.0160	static_loss: 0.0162	final_loss: 0.0158	2024-07-31 13:42:04.273934
+6	'valid'	Time:46.30	MetricT: 1.37	mse: 100.9752	mae: 5.1028	corr: -0.7327	rrse: 0.5280	r2: 0.7509	loss: 0.0628	minmax_loss: 0.0002	dynamic_loss: 0.0209	static_loss: 0.0212	final_loss: 0.0207	2024-07-31 13:42:51.956489
+2024-07-31 13:42:51,957 - utilsd.earlystop - INFO - Earlystop hit best record: 100.97518157958984
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+7	'train'	Time:249.53	MetricT: 6.73	mse: 75.1119	mae: 4.5808	corr: -0.7400	rrse: 0.4661	r2: 0.8023	loss: 0.0467	minmax_loss: 0.0003	dynamic_loss: 0.0156	static_loss: 0.0158	final_loss: 0.0154	2024-07-31 13:47:08.537634
+7	'valid'	Time:46.19	MetricT: 1.89	mse: 98.7754	mae: 5.0527	corr: -0.7373	rrse: 0.5222	r2: 0.7563	loss: 0.0614	minmax_loss: 0.0003	dynamic_loss: 0.0206	static_loss: 0.0206	final_loss: 0.0202	2024-07-31 13:47:56.613506
+2024-07-31 13:47:56,615 - utilsd.earlystop - INFO - Earlystop hit best record: 98.77544403076172
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+8	'train'	Time:249.10	MetricT: 5.52	mse: 74.6633	mae: 4.5829	corr: -0.7397	rrse: 0.4647	r2: 0.8035	loss: 0.0464	minmax_loss: 0.0003	dynamic_loss: 0.0154	static_loss: 0.0157	final_loss: 0.0153	2024-07-31 13:52:11.374561
+8	'valid'	Time:51.05	MetricT: 1.38	mse: 97.3998	mae: 5.3343	corr: -0.7362	rrse: 0.5185	r2: 0.7597	loss: 0.0604	minmax_loss: 0.0002	dynamic_loss: 0.0202	static_loss: 0.0204	final_loss: 0.0199	2024-07-31 13:53:03.808677
+2024-07-31 13:53:03,810 - utilsd.earlystop - INFO - Earlystop hit best record: 97.39976501464844
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+9	'train'	Time:232.28	MetricT: 6.01	mse: 73.7580	mae: 4.5156	corr: -0.7436	rrse: 0.4618	r2: 0.8059	loss: 0.0457	minmax_loss: 0.0002	dynamic_loss: 0.0152	static_loss: 0.0154	final_loss: 0.0151	2024-07-31 13:57:02.272426
+9	'valid'	Time:45.70	MetricT: 1.41	mse: 96.6794	mae: 5.1312	corr: -0.7398	rrse: 0.5166	r2: 0.7615	loss: 0.0599	minmax_loss: 0.0003	dynamic_loss: 0.0199	static_loss: 0.0202	final_loss: 0.0198	2024-07-31 13:57:49.394629
+2024-07-31 13:57:49,396 - utilsd.earlystop - INFO - Earlystop hit best record: 96.67943572998047
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+10	'train'	Time:252.43	MetricT: 5.72	mse: 73.0872	mae: 4.4801	corr: -0.7456	rrse: 0.4597	r2: 0.8076	loss: 0.0453	minmax_loss: 0.0003	dynamic_loss: 0.0151	static_loss: 0.0153	final_loss: 0.0149	2024-07-31 14:02:07.692035
+10	'valid'	Time:54.73	MetricT: 1.39	mse: 99.1669	mae: 5.0920	corr: -0.7390	rrse: 0.5232	r2: 0.7554	loss: 0.0614	minmax_loss: 0.0003	dynamic_loss: 0.0204	static_loss: 0.0207	final_loss: 0.0203	2024-07-31 14:03:03.813842
+2024-07-31 14:03:03,815 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+11	'train'	Time:244.27	MetricT: 5.48	mse: 72.6759	mae: 4.4585	corr: -0.7469	rrse: 0.4584	r2: 0.8087	loss: 0.0450	minmax_loss: 0.0003	dynamic_loss: 0.0150	static_loss: 0.0152	final_loss: 0.0149	2024-07-31 14:07:13.673755
+11	'valid'	Time:45.90	MetricT: 1.87	mse: 95.8606	mae: 5.1096	corr: -0.7436	rrse: 0.5144	r2: 0.7635	loss: 0.0594	minmax_loss: 0.0003	dynamic_loss: 0.0197	static_loss: 0.0201	final_loss: 0.0196	2024-07-31 14:08:01.444162
+2024-07-31 14:08:01,446 - utilsd.earlystop - INFO - Earlystop hit best record: 95.8606185913086
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+12	'train'	Time:243.20	MetricT: 5.92	mse: 72.1604	mae: 4.4240	corr: -0.7499	rrse: 0.4568	r2: 0.8101	loss: 0.0447	minmax_loss: 0.0003	dynamic_loss: 0.0149	static_loss: 0.0150	final_loss: 0.0148	2024-07-31 14:12:10.728417
+12	'valid'	Time:46.68	MetricT: 1.72	mse: 96.1759	mae: 5.0533	corr: -0.7431	rrse: 0.5153	r2: 0.7627	loss: 0.0595	minmax_loss: 0.0003	dynamic_loss: 0.0198	static_loss: 0.0200	final_loss: 0.0197	2024-07-31 14:12:59.131162
+2024-07-31 14:12:59,132 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+13	'train'	Time:242.72	MetricT: 5.52	mse: 72.0903	mae: 4.4408	corr: -0.7486	rrse: 0.4566	r2: 0.8103	loss: 0.0446	minmax_loss: 0.0003	dynamic_loss: 0.0148	static_loss: 0.0150	final_loss: 0.0147	2024-07-31 14:17:07.478745
+13	'valid'	Time:40.81	MetricT: 1.35	mse: 95.6686	mae: 4.8857	corr: -0.7427	rrse: 0.5139	r2: 0.7640	loss: 0.0592	minmax_loss: 0.0003	dynamic_loss: 0.0196	static_loss: 0.0200	final_loss: 0.0196	2024-07-31 14:17:49.648373
+2024-07-31 14:17:49,649 - utilsd.earlystop - INFO - Earlystop hit best record: 95.6686019897461
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+14	'train'	Time:244.77	MetricT: 5.51	mse: 71.8413	mae: 4.4089	corr: -0.7496	rrse: 0.4558	r2: 0.8109	loss: 0.0444	minmax_loss: 0.0003	dynamic_loss: 0.0148	static_loss: 0.0150	final_loss: 0.0147	2024-07-31 14:22:00.072226
+14	'valid'	Time:46.67	MetricT: 1.39	mse: 95.3905	mae: 5.3057	corr: -0.7456	rrse: 0.5132	r2: 0.7647	loss: 0.0590	minmax_loss: 0.0003	dynamic_loss: 0.0195	static_loss: 0.0199	final_loss: 0.0195	2024-07-31 14:22:48.132475
+2024-07-31 14:22:48,134 - utilsd.earlystop - INFO - Earlystop hit best record: 95.39051055908203
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+15	'train'	Time:228.98	MetricT: 5.51	mse: 71.5024	mae: 4.4130	corr: -0.7501	rrse: 0.4547	r2: 0.8118	loss: 0.0442	minmax_loss: 0.0003	dynamic_loss: 0.0147	static_loss: 0.0149	final_loss: 0.0146	2024-07-31 14:26:42.774090
+15	'valid'	Time:47.72	MetricT: 1.40	mse: 94.6424	mae: 4.9925	corr: -0.7443	rrse: 0.5112	r2: 0.7665	loss: 0.0585	minmax_loss: 0.0003	dynamic_loss: 0.0194	static_loss: 0.0197	final_loss: 0.0194	2024-07-31 14:27:31.899599
+2024-07-31 14:27:31,901 - utilsd.earlystop - INFO - Earlystop hit best record: 94.6423568725586
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+16	'train'	Time:239.66	MetricT: 5.52	mse: 70.8732	mae: 4.3435	corr: -0.7542	rrse: 0.4527	r2: 0.8135	loss: 0.0438	minmax_loss: 0.0003	dynamic_loss: 0.0146	static_loss: 0.0147	final_loss: 0.0145	2024-07-31 14:31:37.223004
+16	'valid'	Time:45.10	MetricT: 1.38	mse: 95.0632	mae: 5.0778	corr: -0.7460	rrse: 0.5123	r2: 0.7655	loss: 0.0587	minmax_loss: 0.0003	dynamic_loss: 0.0195	static_loss: 0.0198	final_loss: 0.0194	2024-07-31 14:32:23.705604
+2024-07-31 14:32:23,707 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+17	'train'	Time:232.19	MetricT: 5.41	mse: 70.6143	mae: 4.3179	corr: -0.7567	rrse: 0.4519	r2: 0.8141	loss: 0.0436	minmax_loss: 0.0002	dynamic_loss: 0.0145	static_loss: 0.0147	final_loss: 0.0144	2024-07-31 14:36:21.405165
+17	'valid'	Time:47.21	MetricT: 1.56	mse: 93.8184	mae: 4.8643	corr: -0.7461	rrse: 0.5089	r2: 0.7686	loss: 0.0580	minmax_loss: 0.0003	dynamic_loss: 0.0194	static_loss: 0.0195	final_loss: 0.0192	2024-07-31 14:37:10.175975
+2024-07-31 14:37:10,180 - utilsd.earlystop - INFO - Earlystop hit best record: 93.8183822631836
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+18	'train'	Time:242.00	MetricT: 5.72	mse: 70.5779	mae: 4.3307	corr: -0.7552	rrse: 0.4518	r2: 0.8142	loss: 0.0436	minmax_loss: 0.0003	dynamic_loss: 0.0145	static_loss: 0.0146	final_loss: 0.0144	2024-07-31 14:41:18.058923
+18	'valid'	Time:50.70	MetricT: 1.38	mse: 96.1407	mae: 5.3535	corr: -0.7456	rrse: 0.5152	r2: 0.7628	loss: 0.0594	minmax_loss: 0.0003	dynamic_loss: 0.0197	static_loss: 0.0200	final_loss: 0.0197	2024-07-31 14:42:10.138684
+2024-07-31 14:42:10,140 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+19	'train'	Time:228.76	MetricT: 5.72	mse: 70.1774	mae: 4.3041	corr: -0.7569	rrse: 0.4505	r2: 0.8153	loss: 0.0433	minmax_loss: 0.0003	dynamic_loss: 0.0144	static_loss: 0.0145	final_loss: 0.0143	2024-07-31 14:46:04.718574
+19	'valid'	Time:37.94	MetricT: 1.54	mse: 93.8374	mae: 4.8384	corr: -0.7466	rrse: 0.5090	r2: 0.7685	loss: 0.0579	minmax_loss: 0.0003	dynamic_loss: 0.0193	static_loss: 0.0194	final_loss: 0.0192	2024-07-31 14:46:44.195467
+2024-07-31 14:46:44,197 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+20	'train'	Time:238.52	MetricT: 5.66	mse: 70.1444	mae: 4.3170	corr: -0.7561	rrse: 0.4504	r2: 0.8154	loss: 0.0433	minmax_loss: 0.0003	dynamic_loss: 0.0144	static_loss: 0.0145	final_loss: 0.0143	2024-07-31 14:50:48.482742
+20	'valid'	Time:48.12	MetricT: 1.53	mse: 93.8143	mae: 4.8272	corr: -0.7478	rrse: 0.5089	r2: 0.7686	loss: 0.0579	minmax_loss: 0.0003	dynamic_loss: 0.0192	static_loss: 0.0195	final_loss: 0.0192	2024-07-31 14:51:38.131256
+2024-07-31 14:51:38,132 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+21	'train'	Time:235.15	MetricT: 6.15	mse: 69.7148	mae: 4.2706	corr: -0.7597	rrse: 0.4490	r2: 0.8165	loss: 0.0430	minmax_loss: 0.0003	dynamic_loss: 0.0143	static_loss: 0.0144	final_loss: 0.0143	2024-07-31 14:55:39.533100
+21	'valid'	Time:51.04	MetricT: 1.41	mse: 95.6411	mae: 4.8510	corr: -0.7459	rrse: 0.5138	r2: 0.7641	loss: 0.0590	minmax_loss: 0.0003	dynamic_loss: 0.0195	static_loss: 0.0200	final_loss: 0.0196	2024-07-31 14:56:31.990488
+2024-07-31 14:56:31,991 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+22	'train'	Time:223.85	MetricT: 5.51	mse: 69.6182	mae: 4.2643	corr: -0.7597	rrse: 0.4487	r2: 0.8168	loss: 0.0429	minmax_loss: 0.0003	dynamic_loss: 0.0143	static_loss: 0.0144	final_loss: 0.0142	2024-07-31 15:00:21.445451
+22	'valid'	Time:43.12	MetricT: 1.38	mse: 92.9242	mae: 4.8157	corr: -0.7483	rrse: 0.5065	r2: 0.7708	loss: 0.0573	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0192	final_loss: 0.0190	2024-07-31 15:01:05.945981
+2024-07-31 15:01:05,946 - utilsd.earlystop - INFO - Earlystop hit best record: 92.92418670654297
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+23	'train'	Time:247.34	MetricT: 5.61	mse: 69.4998	mae: 4.2616	corr: -0.7606	rrse: 0.4483	r2: 0.8171	loss: 0.0428	minmax_loss: 0.0003	dynamic_loss: 0.0143	static_loss: 0.0143	final_loss: 0.0142	2024-07-31 15:05:19.064686
+23	'valid'	Time:46.60	MetricT: 1.37	mse: 95.4429	mae: 4.8604	corr: -0.7502	rrse: 0.5133	r2: 0.7645	loss: 0.0589	minmax_loss: 0.0003	dynamic_loss: 0.0195	static_loss: 0.0199	final_loss: 0.0195	2024-07-31 15:06:07.042624
+2024-07-31 15:06:07,044 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+24	'train'	Time:242.83	MetricT: 5.58	mse: 69.3999	mae: 4.2519	corr: -0.7612	rrse: 0.4480	r2: 0.8173	loss: 0.0428	minmax_loss: 0.0003	dynamic_loss: 0.0143	static_loss: 0.0143	final_loss: 0.0142	2024-07-31 15:10:15.551826
+24	'valid'	Time:50.99	MetricT: 2.19	mse: 93.7621	mae: 5.1938	corr: -0.7495	rrse: 0.5088	r2: 0.7687	loss: 0.0578	minmax_loss: 0.0003	dynamic_loss: 0.0193	static_loss: 0.0194	final_loss: 0.0192	2024-07-31 15:11:08.737525
+2024-07-31 15:11:08,738 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+25	'train'	Time:244.42	MetricT: 5.52	mse: 69.2622	mae: 4.2598	corr: -0.7611	rrse: 0.4475	r2: 0.8177	loss: 0.0427	minmax_loss: 0.0003	dynamic_loss: 0.0142	static_loss: 0.0143	final_loss: 0.0142	2024-07-31 15:15:18.852843
+25	'valid'	Time:47.21	MetricT: 1.56	mse: 93.4352	mae: 4.8252	corr: -0.7486	rrse: 0.5079	r2: 0.7695	loss: 0.0576	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0194	final_loss: 0.0191	2024-07-31 15:16:07.622395
+2024-07-31 15:16:07,624 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+26	'train'	Time:238.95	MetricT: 5.92	mse: 69.2888	mae: 4.2717	corr: -0.7598	rrse: 0.4476	r2: 0.8176	loss: 0.0427	minmax_loss: 0.0003	dynamic_loss: 0.0142	static_loss: 0.0143	final_loss: 0.0142	2024-07-31 15:20:12.593381
+26	'valid'	Time:53.38	MetricT: 1.39	mse: 92.4135	mae: 4.7524	corr: -0.7489	rrse: 0.5051	r2: 0.7720	loss: 0.0570	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0190	final_loss: 0.0189	2024-07-31 15:21:07.369628
+2024-07-31 15:21:07,370 - utilsd.earlystop - INFO - Earlystop hit best record: 92.41352081298828
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+27	'train'	Time:235.43	MetricT: 6.37	mse: 68.9587	mae: 4.2287	corr: -0.7629	rrse: 0.4466	r2: 0.8185	loss: 0.0425	minmax_loss: 0.0003	dynamic_loss: 0.0142	static_loss: 0.0142	final_loss: 0.0141	2024-07-31 15:25:09.314785
+27	'valid'	Time:50.08	MetricT: 2.08	mse: 92.9728	mae: 4.7635	corr: -0.7492	rrse: 0.5066	r2: 0.7706	loss: 0.0573	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0191	final_loss: 0.0190	2024-07-31 15:26:01.475325
+2024-07-31 15:26:01,480 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+28	'train'	Time:244.55	MetricT: 5.49	mse: 68.8174	mae: 4.2175	corr: -0.7630	rrse: 0.4461	r2: 0.8189	loss: 0.0424	minmax_loss: 0.0002	dynamic_loss: 0.0142	static_loss: 0.0142	final_loss: 0.0141	2024-07-31 15:30:11.705565
+28	'valid'	Time:50.06	MetricT: 1.48	mse: 91.7650	mae: 4.9024	corr: -0.7499	rrse: 0.5033	r2: 0.7736	loss: 0.0566	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0189	final_loss: 0.0188	2024-07-31 15:31:03.241428
+2024-07-31 15:31:03,242 - utilsd.earlystop - INFO - Earlystop hit best record: 91.76496124267578
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+29	'train'	Time:237.33	MetricT: 6.13	mse: 68.7921	mae: 4.2336	corr: -0.7634	rrse: 0.4460	r2: 0.8189	loss: 0.0424	minmax_loss: 0.0003	dynamic_loss: 0.0141	static_loss: 0.0141	final_loss: 0.0141	2024-07-31 15:35:06.843993
+29	'valid'	Time:51.41	MetricT: 1.51	mse: 94.5211	mae: 5.5182	corr: -0.7488	rrse: 0.5108	r2: 0.7668	loss: 0.0583	minmax_loss: 0.0003	dynamic_loss: 0.0194	static_loss: 0.0195	final_loss: 0.0193	2024-07-31 15:35:59.767826
+2024-07-31 15:35:59,769 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+30	'train'	Time:244.61	MetricT: 5.46	mse: 68.7406	mae: 4.2354	corr: -0.7618	rrse: 0.4458	r2: 0.8191	loss: 0.0423	minmax_loss: 0.0002	dynamic_loss: 0.0141	static_loss: 0.0141	final_loss: 0.0141	2024-07-31 15:40:09.935248
+30	'valid'	Time:44.98	MetricT: 1.35	mse: 92.1984	mae: 5.1052	corr: -0.7490	rrse: 0.5045	r2: 0.7725	loss: 0.0568	minmax_loss: 0.0002	dynamic_loss: 0.0189	static_loss: 0.0190	final_loss: 0.0189	2024-07-31 15:40:56.272528
+2024-07-31 15:40:56,273 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+31	'train'	Time:226.42	MetricT: 5.46	mse: 68.6408	mae: 4.2365	corr: -0.7631	rrse: 0.4455	r2: 0.8193	loss: 0.0423	minmax_loss: 0.0003	dynamic_loss: 0.0141	static_loss: 0.0141	final_loss: 0.0140	2024-07-31 15:44:48.250958
+31	'valid'	Time:42.51	MetricT: 1.38	mse: 92.2464	mae: 4.7883	corr: -0.7491	rrse: 0.5046	r2: 0.7724	loss: 0.0569	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0190	final_loss: 0.0189	2024-07-31 15:45:32.147534
+2024-07-31 15:45:32,149 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+32	'train'	Time:234.10	MetricT: 5.47	mse: 68.5396	mae: 4.2308	corr: -0.7628	rrse: 0.4452	r2: 0.8196	loss: 0.0422	minmax_loss: 0.0003	dynamic_loss: 0.0141	static_loss: 0.0141	final_loss: 0.0140	2024-07-31 15:49:31.842442
+32	'valid'	Time:47.20	MetricT: 1.39	mse: 92.7484	mae: 4.7880	corr: -0.7500	rrse: 0.5060	r2: 0.7712	loss: 0.0571	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0191	final_loss: 0.0190	2024-07-31 15:50:20.439643
+2024-07-31 15:50:20,441 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+33	'train'	Time:244.17	MetricT: 5.96	mse: 68.4148	mae: 4.2235	corr: -0.7631	rrse: 0.4448	r2: 0.8199	loss: 0.0421	minmax_loss: 0.0003	dynamic_loss: 0.0141	static_loss: 0.0141	final_loss: 0.0140	2024-07-31 15:54:30.669759
+33	'valid'	Time:47.85	MetricT: 1.37	mse: 94.7700	mae: 4.8865	corr: -0.7499	rrse: 0.5115	r2: 0.7662	loss: 0.0584	minmax_loss: 0.0003	dynamic_loss: 0.0194	static_loss: 0.0196	final_loss: 0.0194	2024-07-31 15:55:19.896055
+2024-07-31 15:55:19,898 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+34	'train'	Time:231.26	MetricT: 5.58	mse: 68.1272	mae: 4.1990	corr: -0.7655	rrse: 0.4439	r2: 0.8207	loss: 0.0419	minmax_loss: 0.0003	dynamic_loss: 0.0140	static_loss: 0.0140	final_loss: 0.0139	2024-07-31 15:59:16.831528
+34	'valid'	Time:43.59	MetricT: 1.36	mse: 92.0219	mae: 4.8461	corr: -0.7496	rrse: 0.5040	r2: 0.7730	loss: 0.0567	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0189	final_loss: 0.0188	2024-07-31 16:00:01.784762
+2024-07-31 16:00:01,786 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+35	'train'	Time:241.58	MetricT: 6.85	mse: 68.0963	mae: 4.1935	corr: -0.7657	rrse: 0.4438	r2: 0.8208	loss: 0.0419	minmax_loss: 0.0003	dynamic_loss: 0.0140	static_loss: 0.0140	final_loss: 0.0139	2024-07-31 16:04:10.337217
+35	'valid'	Time:50.79	MetricT: 1.75	mse: 92.4753	mae: 4.8426	corr: -0.7479	rrse: 0.5053	r2: 0.7719	loss: 0.0570	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0191	final_loss: 0.0189	2024-07-31 16:05:02.875652
+2024-07-31 16:05:02,878 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+36	'train'	Time:233.51	MetricT: 5.57	mse: 67.9526	mae: 4.1871	corr: -0.7658	rrse: 0.4433	r2: 0.8212	loss: 0.0418	minmax_loss: 0.0003	dynamic_loss: 0.0140	static_loss: 0.0139	final_loss: 0.0139	2024-07-31 16:09:02.129206
+36	'valid'	Time:56.40	MetricT: 1.36	mse: 92.0846	mae: 5.2125	corr: -0.7473	rrse: 0.5042	r2: 0.7728	loss: 0.0567	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0190	final_loss: 0.0188	2024-07-31 16:09:59.893887
+2024-07-31 16:09:59,895 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+37	'train'	Time:238.06	MetricT: 6.43	mse: 68.0323	mae: 4.2228	corr: -0.7639	rrse: 0.4435	r2: 0.8209	loss: 0.0419	minmax_loss: 0.0003	dynamic_loss: 0.0140	static_loss: 0.0140	final_loss: 0.0139	2024-07-31 16:14:04.542841
+37	'valid'	Time:44.33	MetricT: 1.37	mse: 91.8102	mae: 4.8576	corr: -0.7497	rrse: 0.5034	r2: 0.7735	loss: 0.0565	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0188	final_loss: 0.0188	2024-07-31 16:14:50.246192
+2024-07-31 16:14:50,247 - utilsd.earlystop - INFO - Earlystop patience 9 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+38	'train'	Time:246.54	MetricT: 5.43	mse: 67.7409	mae: 4.1883	corr: -0.7658	rrse: 0.4426	r2: 0.8217	loss: 0.0417	minmax_loss: 0.0003	dynamic_loss: 0.0139	static_loss: 0.0139	final_loss: 0.0139	2024-07-31 16:19:02.344491
+38	'valid'	Time:51.30	MetricT: 1.38	mse: 91.3940	mae: 4.8657	corr: -0.7514	rrse: 0.5023	r2: 0.7745	loss: 0.0563	minmax_loss: 0.0003	dynamic_loss: 0.0188	static_loss: 0.0189	final_loss: 0.0187	2024-07-31 16:19:55.029545
+2024-07-31 16:19:55,030 - utilsd.earlystop - INFO - Earlystop hit best record: 91.39400482177734
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+39	'train'	Time:247.91	MetricT: 5.51	mse: 67.6028	mae: 4.1896	corr: -0.7665	rrse: 0.4421	r2: 0.8221	loss: 0.0416	minmax_loss: 0.0003	dynamic_loss: 0.0139	static_loss: 0.0139	final_loss: 0.0138	2024-07-31 16:24:08.617054
+39	'valid'	Time:49.97	MetricT: 1.42	mse: 93.3729	mae: 4.7934	corr: -0.7517	rrse: 0.5077	r2: 0.7697	loss: 0.0575	minmax_loss: 0.0003	dynamic_loss: 0.0192	static_loss: 0.0192	final_loss: 0.0191	2024-07-31 16:25:00.007857
+2024-07-31 16:25:00,009 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+40	'train'	Time:251.64	MetricT: 6.18	mse: 67.9884	mae: 4.2383	corr: -0.7627	rrse: 0.4434	r2: 0.8211	loss: 0.0419	minmax_loss: 0.0003	dynamic_loss: 0.0140	static_loss: 0.0140	final_loss: 0.0139	2024-07-31 16:29:17.953901
+40	'valid'	Time:48.93	MetricT: 1.39	mse: 96.8133	mae: 5.8673	corr: -0.7508	rrse: 0.5170	r2: 0.7612	loss: 0.0596	minmax_loss: 0.0003	dynamic_loss: 0.0198	static_loss: 0.0200	final_loss: 0.0198	2024-07-31 16:30:08.275802
+2024-07-31 16:30:08,277 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+41	'train'	Time:238.75	MetricT: 5.65	mse: 67.8555	mae: 4.2224	corr: -0.7640	rrse: 0.4430	r2: 0.8214	loss: 0.0418	minmax_loss: 0.0003	dynamic_loss: 0.0140	static_loss: 0.0139	final_loss: 0.0139	2024-07-31 16:34:12.783695
+41	'valid'	Time:43.23	MetricT: 1.34	mse: 91.5752	mae: 4.9608	corr: -0.7507	rrse: 0.5028	r2: 0.7741	loss: 0.0564	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0188	final_loss: 0.0187	2024-07-31 16:34:57.354032
+2024-07-31 16:34:57,355 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+42	'train'	Time:228.79	MetricT: 5.50	mse: 67.5588	mae: 4.2130	corr: -0.7643	rrse: 0.4420	r2: 0.8222	loss: 0.0416	minmax_loss: 0.0002	dynamic_loss: 0.0139	static_loss: 0.0139	final_loss: 0.0138	2024-07-31 16:38:51.789414
+42	'valid'	Time:47.85	MetricT: 1.94	mse: 92.0366	mae: 4.8571	corr: -0.7510	rrse: 0.5041	r2: 0.7729	loss: 0.0567	minmax_loss: 0.0002	dynamic_loss: 0.0189	static_loss: 0.0189	final_loss: 0.0188	2024-07-31 16:39:41.588506
+2024-07-31 16:39:41,589 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+43	'train'	Time:233.60	MetricT: 5.69	mse: 67.1859	mae: 4.1659	corr: -0.7679	rrse: 0.4408	r2: 0.8232	loss: 0.0414	minmax_loss: 0.0002	dynamic_loss: 0.0138	static_loss: 0.0138	final_loss: 0.0137	2024-07-31 16:43:41.043087
+43	'valid'	Time:48.16	MetricT: 1.53	mse: 92.2764	mae: 4.8848	corr: -0.7533	rrse: 0.5047	r2: 0.7724	loss: 0.0568	minmax_loss: 0.0002	dynamic_loss: 0.0189	static_loss: 0.0190	final_loss: 0.0189	2024-07-31 16:44:30.739668
+2024-07-31 16:44:30,740 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+44	'train'	Time:233.13	MetricT: 5.54	mse: 67.1149	mae: 4.1632	corr: -0.7683	rrse: 0.4405	r2: 0.8234	loss: 0.0413	minmax_loss: 0.0003	dynamic_loss: 0.0138	static_loss: 0.0138	final_loss: 0.0137	2024-07-31 16:48:29.534139
+44	'valid'	Time:52.41	MetricT: 2.06	mse: 92.3660	mae: 4.7621	corr: -0.7517	rrse: 0.5050	r2: 0.7721	loss: 0.0569	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0190	final_loss: 0.0189	2024-07-31 16:49:24.001428
+2024-07-31 16:49:24,003 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+45	'train'	Time:262.66	MetricT: 5.58	mse: 66.9707	mae: 4.1607	corr: -0.7689	rrse: 0.4401	r2: 0.8237	loss: 0.0412	minmax_loss: 0.0003	dynamic_loss: 0.0138	static_loss: 0.0137	final_loss: 0.0137	2024-07-31 16:53:52.373531
+45	'valid'	Time:46.01	MetricT: 2.00	mse: 91.5054	mae: 4.9132	corr: -0.7514	rrse: 0.5026	r2: 0.7743	loss: 0.0564	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0188	final_loss: 0.0187	2024-07-31 16:54:40.392418
+2024-07-31 16:54:40,393 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+46	'train'	Time:259.63	MetricT: 5.45	mse: 66.8979	mae: 4.1644	corr: -0.7679	rrse: 0.4398	r2: 0.8239	loss: 0.0412	minmax_loss: 0.0003	dynamic_loss: 0.0138	static_loss: 0.0137	final_loss: 0.0137	2024-07-31 16:59:05.598694
+46	'valid'	Time:46.31	MetricT: 1.40	mse: 91.9698	mae: 4.8145	corr: -0.7492	rrse: 0.5039	r2: 0.7731	loss: 0.0566	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0190	final_loss: 0.0188	2024-07-31 16:59:53.303752
+2024-07-31 16:59:53,305 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+47	'train'	Time:252.35	MetricT: 5.59	mse: 66.8761	mae: 4.1736	corr: -0.7677	rrse: 0.4398	r2: 0.8240	loss: 0.0412	minmax_loss: 0.0003	dynamic_loss: 0.0138	static_loss: 0.0137	final_loss: 0.0137	2024-07-31 17:04:11.383961
+47	'valid'	Time:44.87	MetricT: 1.40	mse: 93.5203	mae: 4.7671	corr: -0.7494	rrse: 0.5081	r2: 0.7693	loss: 0.0576	minmax_loss: 0.0003	dynamic_loss: 0.0192	static_loss: 0.0193	final_loss: 0.0191	2024-07-31 17:04:57.648931
+2024-07-31 17:04:57,650 - utilsd.earlystop - INFO - Earlystop patience 9 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+48	'train'	Time:220.19	MetricT: 6.42	mse: 66.8130	mae: 4.1738	corr: -0.7679	rrse: 0.4396	r2: 0.8241	loss: 0.0411	minmax_loss: 0.0003	dynamic_loss: 0.0138	static_loss: 0.0137	final_loss: 0.0137	2024-07-31 17:08:44.353313
+48	'valid'	Time:51.14	MetricT: 1.37	mse: 92.4121	mae: 4.7443	corr: -0.7498	rrse: 0.5051	r2: 0.7720	loss: 0.0569	minmax_loss: 0.0002	dynamic_loss: 0.0190	static_loss: 0.0191	final_loss: 0.0189	2024-07-31 17:09:36.864109
+2024-07-31 17:09:36,865 - utilsd.earlystop - INFO - Earlystop patience 10 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+49	'train'	Time:235.86	MetricT: 5.60	mse: 66.8155	mae: 4.1783	corr: -0.7669	rrse: 0.4396	r2: 0.8241	loss: 0.0412	minmax_loss: 0.0003	dynamic_loss: 0.0138	static_loss: 0.0137	final_loss: 0.0137	2024-07-31 17:13:38.574096
+49	'valid'	Time:47.34	MetricT: 1.81	mse: 90.5445	mae: 4.8764	corr: -0.7530	rrse: 0.5000	r2: 0.7766	loss: 0.0558	minmax_loss: 0.0003	dynamic_loss: 0.0186	static_loss: 0.0186	final_loss: 0.0185	2024-07-31 17:14:27.725277
+2024-07-31 17:14:27,732 - utilsd.earlystop - INFO - Earlystop hit best record: 90.54448699951172
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+50	'train'	Time:249.49	MetricT: 5.65	mse: 66.3447	mae: 4.1400	corr: -0.7708	rrse: 0.4380	r2: 0.8254	loss: 0.0409	minmax_loss: 0.0003	dynamic_loss: 0.0137	static_loss: 0.0136	final_loss: 0.0136	2024-07-31 17:18:43.145056
+50	'valid'	Time:44.00	MetricT: 1.37	mse: 92.6941	mae: 4.7949	corr: -0.7517	rrse: 0.5059	r2: 0.7713	loss: 0.0571	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0192	final_loss: 0.0190	2024-07-31 17:19:28.515396
+2024-07-31 17:19:28,517 - utilsd.earlystop - INFO - Earlystop patience 1 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+51	'train'	Time:231.26	MetricT: 6.85	mse: 66.3957	mae: 4.1491	corr: -0.7696	rrse: 0.4382	r2: 0.8252	loss: 0.0409	minmax_loss: 0.0003	dynamic_loss: 0.0137	static_loss: 0.0136	final_loss: 0.0136	2024-07-31 17:23:26.753233
+51	'valid'	Time:53.19	MetricT: 1.36	mse: 92.4240	mae: 4.7465	corr: -0.7543	rrse: 0.5051	r2: 0.7720	loss: 0.0569	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0191	final_loss: 0.0189	2024-07-31 17:24:21.305063
+2024-07-31 17:24:21,306 - utilsd.earlystop - INFO - Earlystop patience 2 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+52	'train'	Time:234.97	MetricT: 6.24	mse: 66.1399	mae: 4.1516	corr: -0.7692	rrse: 0.4373	r2: 0.8259	loss: 0.0407	minmax_loss: 0.0003	dynamic_loss: 0.0136	static_loss: 0.0136	final_loss: 0.0135	2024-07-31 17:28:22.604397
+52	'valid'	Time:46.73	MetricT: 1.39	mse: 93.2756	mae: 5.0775	corr: -0.7500	rrse: 0.5074	r2: 0.7699	loss: 0.0575	minmax_loss: 0.0003	dynamic_loss: 0.0192	static_loss: 0.0192	final_loss: 0.0191	2024-07-31 17:29:10.732246
+2024-07-31 17:29:10,733 - utilsd.earlystop - INFO - Earlystop patience 3 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+53	'train'	Time:222.60	MetricT: 5.59	mse: 66.3457	mae: 4.1668	corr: -0.7676	rrse: 0.4380	r2: 0.8254	loss: 0.0409	minmax_loss: 0.0003	dynamic_loss: 0.0137	static_loss: 0.0136	final_loss: 0.0136	2024-07-31 17:32:59.022106
+53	'valid'	Time:48.31	MetricT: 2.15	mse: 93.1508	mae: 4.8424	corr: -0.7513	rrse: 0.5071	r2: 0.7702	loss: 0.0574	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0193	final_loss: 0.0191	2024-07-31 17:33:49.483416
+2024-07-31 17:33:49,485 - utilsd.earlystop - INFO - Earlystop patience 4 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+54	'train'	Time:239.45	MetricT: 6.33	mse: 66.2429	mae: 4.1903	corr: -0.7671	rrse: 0.4377	r2: 0.8256	loss: 0.0408	minmax_loss: 0.0003	dynamic_loss: 0.0137	static_loss: 0.0136	final_loss: 0.0135	2024-07-31 17:37:55.423896
+54	'valid'	Time:47.76	MetricT: 1.52	mse: 92.8405	mae: 4.7791	corr: -0.7483	rrse: 0.5063	r2: 0.7710	loss: 0.0572	minmax_loss: 0.0002	dynamic_loss: 0.0190	static_loss: 0.0192	final_loss: 0.0190	2024-07-31 17:38:44.707904
+2024-07-31 17:38:44,709 - utilsd.earlystop - INFO - Earlystop patience 5 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+55	'train'	Time:238.31	MetricT: 6.76	mse: 66.0213	mae: 4.1602	corr: -0.7689	rrse: 0.4369	r2: 0.8262	loss: 0.0407	minmax_loss: 0.0002	dynamic_loss: 0.0136	static_loss: 0.0136	final_loss: 0.0135	2024-07-31 17:42:49.871473
+55	'valid'	Time:48.46	MetricT: 1.39	mse: 90.9815	mae: 4.8592	corr: -0.7447	rrse: 0.5012	r2: 0.7756	loss: 0.0561	minmax_loss: 0.0003	dynamic_loss: 0.0186	static_loss: 0.0188	final_loss: 0.0186	2024-07-31 17:43:39.723518
+2024-07-31 17:43:39,725 - utilsd.earlystop - INFO - Earlystop patience 6 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+56	'train'	Time:241.77	MetricT: 5.55	mse: 65.7665	mae: 4.1453	corr: -0.7697	rrse: 0.4361	r2: 0.8269	loss: 0.0405	minmax_loss: 0.0003	dynamic_loss: 0.0136	static_loss: 0.0135	final_loss: 0.0134	2024-07-31 17:47:47.147380
+56	'valid'	Time:50.50	MetricT: 1.44	mse: 92.6349	mae: 4.8311	corr: -0.7495	rrse: 0.5057	r2: 0.7715	loss: 0.0571	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0193	final_loss: 0.0189	2024-07-31 17:48:39.087081
+2024-07-31 17:48:39,088 - utilsd.earlystop - INFO - Earlystop patience 7 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+57	'train'	Time:239.23	MetricT: 6.46	mse: 65.6255	mae: 4.1350	corr: -0.7705	rrse: 0.4356	r2: 0.8273	loss: 0.0405	minmax_loss: 0.0003	dynamic_loss: 0.0136	static_loss: 0.0135	final_loss: 0.0134	2024-07-31 17:52:44.887325
+57	'valid'	Time:50.41	MetricT: 1.40	mse: 92.7089	mae: 4.8231	corr: -0.7506	rrse: 0.5059	r2: 0.7713	loss: 0.0571	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0192	final_loss: 0.0190	2024-07-31 17:53:36.694838
+2024-07-31 17:53:36,696 - utilsd.earlystop - INFO - Earlystop patience 8 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+58	'train'	Time:245.94	MetricT: 5.58	mse: 65.7737	mae: 4.1626	corr: -0.7685	rrse: 0.4361	r2: 0.8269	loss: 0.0406	minmax_loss: 0.0003	dynamic_loss: 0.0136	static_loss: 0.0135	final_loss: 0.0134	2024-07-31 17:57:48.312210
+58	'valid'	Time:43.93	MetricT: 1.54	mse: 93.1872	mae: 5.1534	corr: -0.7456	rrse: 0.5072	r2: 0.7701	loss: 0.0574	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0193	final_loss: 0.0191	2024-07-31 17:58:33.784949
+2024-07-31 17:58:33,787 - utilsd.earlystop - INFO - Earlystop patience 9 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+59	'train'	Time:235.44	MetricT: 7.89	mse: 65.6068	mae: 4.1544	corr: -0.7694	rrse: 0.4356	r2: 0.8273	loss: 0.0405	minmax_loss: 0.0003	dynamic_loss: 0.0136	static_loss: 0.0135	final_loss: 0.0134	2024-07-31 18:02:37.209155
+59	'valid'	Time:55.25	MetricT: 1.39	mse: 91.1589	mae: 4.8747	corr: -0.7486	rrse: 0.5017	r2: 0.7751	loss: 0.0562	minmax_loss: 0.0003	dynamic_loss: 0.0187	static_loss: 0.0188	final_loss: 0.0186	2024-07-31 18:03:33.863831
+2024-07-31 18:03:33,865 - utilsd.earlystop - INFO - Earlystop patience 10 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+60	'train'	Time:246.70	MetricT: 5.76	mse: 65.2707	mae: 4.1351	corr: -0.7705	rrse: 0.4344	r2: 0.8282	loss: 0.0403	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0134	final_loss: 0.0133	2024-07-31 18:07:46.424494
+60	'valid'	Time:49.82	MetricT: 1.37	mse: 91.5920	mae: 4.9109	corr: -0.7502	rrse: 0.5028	r2: 0.7740	loss: 0.0565	minmax_loss: 0.0003	dynamic_loss: 0.0188	static_loss: 0.0189	final_loss: 0.0187	2024-07-31 18:08:37.610765
+2024-07-31 18:08:37,612 - utilsd.earlystop - INFO - Earlystop patience 11 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+61	'train'	Time:232.34	MetricT: 5.51	mse: 65.7034	mae: 4.1905	corr: -0.7669	rrse: 0.4359	r2: 0.8271	loss: 0.0405	minmax_loss: 0.0003	dynamic_loss: 0.0136	static_loss: 0.0135	final_loss: 0.0134	2024-07-31 18:12:35.559143
+61	'valid'	Time:50.73	MetricT: 1.42	mse: 93.6246	mae: 4.8594	corr: -0.7500	rrse: 0.5084	r2: 0.7690	loss: 0.0578	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0196	final_loss: 0.0192	2024-07-31 18:13:27.706754
+2024-07-31 18:13:27,707 - utilsd.earlystop - INFO - Earlystop patience 12 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+62	'train'	Time:246.94	MetricT: 5.55	mse: 65.1506	mae: 4.1372	corr: -0.7702	rrse: 0.4340	r2: 0.8285	loss: 0.0402	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0134	final_loss: 0.0133	2024-07-31 18:17:40.320790
+62	'valid'	Time:47.27	MetricT: 1.93	mse: 94.2655	mae: 4.9498	corr: -0.7520	rrse: 0.5101	r2: 0.7674	loss: 0.0581	minmax_loss: 0.0003	dynamic_loss: 0.0193	static_loss: 0.0196	final_loss: 0.0193	2024-07-31 18:18:29.522870
+2024-07-31 18:18:29,524 - utilsd.earlystop - INFO - Earlystop patience 13 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+63	'train'	Time:247.36	MetricT: 5.54	mse: 65.1768	mae: 4.1475	corr: -0.7688	rrse: 0.4341	r2: 0.8285	loss: 0.0402	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0134	final_loss: 0.0133	2024-07-31 18:22:42.525061
+63	'valid'	Time:46.50	MetricT: 1.40	mse: 91.3827	mae: 4.9999	corr: -0.7485	rrse: 0.5023	r2: 0.7746	loss: 0.0563	minmax_loss: 0.0003	dynamic_loss: 0.0188	static_loss: 0.0189	final_loss: 0.0187	2024-07-31 18:23:30.430738
+2024-07-31 18:23:30,432 - utilsd.earlystop - INFO - Earlystop patience 14 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+64	'train'	Time:235.66	MetricT: 7.30	mse: 64.8317	mae: 4.1051	corr: -0.7726	rrse: 0.4330	r2: 0.8294	loss: 0.0400	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0133	final_loss: 0.0133	2024-07-31 18:27:33.498811
+64	'valid'	Time:45.44	MetricT: 1.38	mse: 92.0868	mae: 4.8187	corr: -0.7492	rrse: 0.5042	r2: 0.7728	loss: 0.0568	minmax_loss: 0.0003	dynamic_loss: 0.0189	static_loss: 0.0191	final_loss: 0.0188	2024-07-31 18:28:20.323904
+2024-07-31 18:28:20,325 - utilsd.earlystop - INFO - Earlystop patience 15 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+65	'train'	Time:241.22	MetricT: 5.50	mse: 64.8827	mae: 4.1250	corr: -0.7713	rrse: 0.4332	r2: 0.8292	loss: 0.0400	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0133	final_loss: 0.0133	2024-07-31 18:32:27.147441
+65	'valid'	Time:40.89	MetricT: 1.36	mse: 92.4720	mae: 4.8514	corr: -0.7480	rrse: 0.5053	r2: 0.7719	loss: 0.0570	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0192	final_loss: 0.0189	2024-07-31 18:33:09.397239
+2024-07-31 18:33:09,398 - utilsd.earlystop - INFO - Earlystop patience 16 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+66	'train'	Time:225.33	MetricT: 5.60	mse: 64.8859	mae: 4.1454	corr: -0.7700	rrse: 0.4332	r2: 0.8292	loss: 0.0400	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0133	final_loss: 0.0133	2024-07-31 18:37:00.433159
+66	'valid'	Time:46.62	MetricT: 1.39	mse: 94.7711	mae: 4.8960	corr: -0.7499	rrse: 0.5115	r2: 0.7662	loss: 0.0585	minmax_loss: 0.0003	dynamic_loss: 0.0194	static_loss: 0.0197	final_loss: 0.0194	2024-07-31 18:37:48.441757
+2024-07-31 18:37:48,443 - utilsd.earlystop - INFO - Earlystop patience 17 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+67	'train'	Time:231.09	MetricT: 5.55	mse: 64.8584	mae: 4.1402	corr: -0.7697	rrse: 0.4331	r2: 0.8293	loss: 0.0400	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0133	final_loss: 0.0133	2024-07-31 18:41:45.181404
+67	'valid'	Time:48.67	MetricT: 1.55	mse: 94.5356	mae: 4.8506	corr: -0.7492	rrse: 0.5109	r2: 0.7668	loss: 0.0583	minmax_loss: 0.0003	dynamic_loss: 0.0193	static_loss: 0.0197	final_loss: 0.0193	2024-07-31 18:42:35.406617
+2024-07-31 18:42:35,407 - utilsd.earlystop - INFO - Earlystop patience 18 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+68	'train'	Time:236.92	MetricT: 5.62	mse: 64.5928	mae: 4.1394	corr: -0.7687	rrse: 0.4322	r2: 0.8300	loss: 0.0399	minmax_loss: 0.0003	dynamic_loss: 0.0134	static_loss: 0.0133	final_loss: 0.0132	2024-07-31 18:46:38.069544
+68	'valid'	Time:48.42	MetricT: 1.47	mse: 95.9551	mae: 5.1353	corr: -0.7468	rrse: 0.5147	r2: 0.7633	loss: 0.0593	minmax_loss: 0.0003	dynamic_loss: 0.0195	static_loss: 0.0201	final_loss: 0.0196	2024-07-31 18:47:27.962310
+2024-07-31 18:47:27,963 - utilsd.earlystop - INFO - Earlystop patience 19 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+69	'train'	Time:236.77	MetricT: 5.64	mse: 64.8472	mae: 4.1466	corr: -0.7705	rrse: 0.4330	r2: 0.8293	loss: 0.0400	minmax_loss: 0.0003	dynamic_loss: 0.0135	static_loss: 0.0133	final_loss: 0.0133	2024-07-31 18:51:30.476634
+69	'valid'	Time:55.01	MetricT: 1.37	mse: 94.3461	mae: 5.0034	corr: -0.7482	rrse: 0.5104	r2: 0.7673	loss: 0.0582	minmax_loss: 0.0003	dynamic_loss: 0.0192	static_loss: 0.0198	final_loss: 0.0193	2024-07-31 18:52:26.853719
+2024-07-31 18:52:26,855 - utilsd.earlystop - INFO - Earlystop patience 20 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+70	'train'	Time:227.36	MetricT: 6.21	mse: 64.5443	mae: 4.1334	corr: -0.7706	rrse: 0.4320	r2: 0.8301	loss: 0.0399	minmax_loss: 0.0003	dynamic_loss: 0.0134	static_loss: 0.0132	final_loss: 0.0132	2024-07-31 18:56:20.544157
+70	'valid'	Time:42.51	MetricT: 1.40	mse: 92.8224	mae: 4.8668	corr: -0.7479	rrse: 0.5062	r2: 0.7710	loss: 0.0573	minmax_loss: 0.0003	dynamic_loss: 0.0190	static_loss: 0.0193	final_loss: 0.0190	2024-07-31 18:57:04.455996
+2024-07-31 18:57:04,457 - utilsd.earlystop - INFO - Earlystop patience 21 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+71	'train'	Time:245.81	MetricT: 5.68	mse: 64.1444	mae: 4.0991	corr: -0.7730	rrse: 0.4307	r2: 0.8312	loss: 0.0396	minmax_loss: 0.0003	dynamic_loss: 0.0134	static_loss: 0.0131	final_loss: 0.0131	2024-07-31 19:01:16.054693
+71	'valid'	Time:50.64	MetricT: 1.58	mse: 91.8659	mae: 4.8933	corr: -0.7478	rrse: 0.5036	r2: 0.7734	loss: 0.0567	minmax_loss: 0.0003	dynamic_loss: 0.0188	static_loss: 0.0191	final_loss: 0.0188	2024-07-31 19:02:08.276510
+2024-07-31 19:02:08,278 - utilsd.earlystop - INFO - Earlystop patience 22 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+72	'train'	Time:240.01	MetricT: 5.89	mse: 64.3326	mae: 4.1348	corr: -0.7699	rrse: 0.4313	r2: 0.8307	loss: 0.0397	minmax_loss: 0.0003	dynamic_loss: 0.0134	static_loss: 0.0132	final_loss: 0.0132	2024-07-31 19:06:14.286008
+72	'valid'	Time:42.76	MetricT: 1.41	mse: 94.9552	mae: 5.0368	corr: -0.7412	rrse: 0.5120	r2: 0.7657	loss: 0.0586	minmax_loss: 0.0002	dynamic_loss: 0.0194	static_loss: 0.0199	final_loss: 0.0194	2024-07-31 19:06:58.462499
+2024-07-31 19:06:58,463 - utilsd.earlystop - INFO - Earlystop patience 23 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+73	'train'	Time:240.88	MetricT: 5.71	mse: 64.0047	mae: 4.1166	corr: -0.7711	rrse: 0.4302	r2: 0.8315	loss: 0.0395	minmax_loss: 0.0002	dynamic_loss: 0.0133	static_loss: 0.0131	final_loss: 0.0131	2024-07-31 19:11:05.159915
+73	'valid'	Time:45.38	MetricT: 1.41	mse: 93.5311	mae: 5.0477	corr: -0.7427	rrse: 0.5081	r2: 0.7693	loss: 0.0577	minmax_loss: 0.0003	dynamic_loss: 0.0193	static_loss: 0.0193	final_loss: 0.0191	2024-07-31 19:11:51.952378
+2024-07-31 19:11:51,954 - utilsd.earlystop - INFO - Earlystop patience 24 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+74	'train'	Time:244.33	MetricT: 6.16	mse: 63.8983	mae: 4.1241	corr: -0.7711	rrse: 0.4299	r2: 0.8318	loss: 0.0395	minmax_loss: 0.0003	dynamic_loss: 0.0133	static_loss: 0.0131	final_loss: 0.0131	2024-07-31 19:16:02.586512
+74	'valid'	Time:48.93	MetricT: 1.44	mse: 93.4908	mae: 4.8303	corr: -0.7492	rrse: 0.5080	r2: 0.7694	loss: 0.0577	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0195	final_loss: 0.0191	2024-07-31 19:16:52.960165
+2024-07-31 19:16:52,961 - utilsd.earlystop - INFO - Earlystop patience 25 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+75	'train'	Time:253.97	MetricT: 6.65	mse: 63.8145	mae: 4.1076	corr: -0.7720	rrse: 0.4296	r2: 0.8320	loss: 0.0394	minmax_loss: 0.0003	dynamic_loss: 0.0133	static_loss: 0.0131	final_loss: 0.0130	2024-07-31 19:21:13.689368
+75	'valid'	Time:49.99	MetricT: 1.46	mse: 94.7768	mae: 4.9869	corr: -0.7501	rrse: 0.5115	r2: 0.7662	loss: 0.0584	minmax_loss: 0.0003	dynamic_loss: 0.0195	static_loss: 0.0196	final_loss: 0.0194	2024-07-31 19:22:05.144104
+2024-07-31 19:22:05,145 - utilsd.earlystop - INFO - Earlystop patience 26 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+76	'train'	Time:243.19	MetricT: 5.76	mse: 63.8402	mae: 4.1189	corr: -0.7710	rrse: 0.4297	r2: 0.8320	loss: 0.0395	minmax_loss: 0.0003	dynamic_loss: 0.0133	static_loss: 0.0131	final_loss: 0.0131	2024-07-31 19:26:14.191309
+76	'valid'	Time:50.56	MetricT: 1.46	mse: 96.8471	mae: 5.0662	corr: -0.7486	rrse: 0.5171	r2: 0.7611	loss: 0.0597	minmax_loss: 0.0003	dynamic_loss: 0.0197	static_loss: 0.0202	final_loss: 0.0198	2024-07-31 19:27:06.214844
+2024-07-31 19:27:06,216 - utilsd.earlystop - INFO - Earlystop patience 27 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+77	'train'	Time:227.20	MetricT: 5.93	mse: 63.6291	mae: 4.1130	corr: -0.7716	rrse: 0.4290	r2: 0.8325	loss: 0.0393	minmax_loss: 0.0003	dynamic_loss: 0.0132	static_loss: 0.0131	final_loss: 0.0130	2024-07-31 19:30:59.448175
+77	'valid'	Time:52.90	MetricT: 1.37	mse: 95.7129	mae: 4.9539	corr: -0.7473	rrse: 0.5140	r2: 0.7639	loss: 0.0591	minmax_loss: 0.0003	dynamic_loss: 0.0195	static_loss: 0.0200	final_loss: 0.0196	2024-07-31 19:31:53.719073
+2024-07-31 19:31:53,720 - utilsd.earlystop - INFO - Earlystop patience 28 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+78	'train'	Time:224.96	MetricT: 5.53	mse: 63.8470	mae: 4.1584	corr: -0.7676	rrse: 0.4297	r2: 0.8320	loss: 0.0395	minmax_loss: 0.0003	dynamic_loss: 0.0133	static_loss: 0.0131	final_loss: 0.0131	2024-07-31 19:35:44.305917
+78	'valid'	Time:53.54	MetricT: 1.51	mse: 93.4367	mae: 4.9651	corr: -0.7448	rrse: 0.5079	r2: 0.7695	loss: 0.0577	minmax_loss: 0.0003	dynamic_loss: 0.0191	static_loss: 0.0195	final_loss: 0.0191	2024-07-31 19:36:39.363332
+2024-07-31 19:36:39,365 - utilsd.earlystop - INFO - Earlystop patience 29 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+79	'train'	Time:239.52	MetricT: 5.46	mse: 63.5222	mae: 4.1104	corr: -0.7719	rrse: 0.4286	r2: 0.8328	loss: 0.0393	minmax_loss: 0.0003	dynamic_loss: 0.0133	static_loss: 0.0130	final_loss: 0.0130	2024-07-31 19:40:44.436295
+79	'valid'	Time:53.23	MetricT: 1.37	mse: 94.2626	mae: 5.0028	corr: -0.7430	rrse: 0.5101	r2: 0.7675	loss: 0.0582	minmax_loss: 0.0003	dynamic_loss: 0.0193	static_loss: 0.0196	final_loss: 0.0193	2024-07-31 19:41:39.035088
+2024-07-31 19:41:39,036 - utilsd.earlystop - INFO - Earlystop patience 30 out of 30
+Checkpoint saved to outputs/checkpoints/resume.pth forecaster.model.base
+80	'train'	Time:244.41	MetricT: 5.62	mse: 63.2274	mae: 4.0855	corr: -0.7730	rrse: 0.4276	r2: 0.8336	loss: 0.0391	minmax_loss: 0.0003	dynamic_loss: 0.0132	static_loss: 0.0130	final_loss: 0.0129	2024-07-31 19:45:49.162390
+80	'valid'	Time:49.71	MetricT: 1.40	mse: 94.9611	mae: 4.9864	corr: -0.7478	rrse: 0.5120	r2: 0.7657	loss: 0.0587	minmax_loss: 0.0003	dynamic_loss: 0.0196	static_loss: 0.0196	final_loss: 0.0194	2024-07-31 19:46:40.270523
+2024-07-31 19:46:40,271 - utilsd.earlystop - INFO - Earlystop running out of patience (30)
+Begin evaluate on testset ...
