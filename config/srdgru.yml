@@ -1,7 +1,7 @@
 data:
   type: TSMSDataset
 #  file: data/pems(sample).h5
-  file: data/pems-bay.h5
+  file: data/metr-la.h5
   window: 12
   horizon: 6
   train_ratio: 0.7
