@@ -12,6 +12,7 @@ from torch.distributions.kl import kl_divergence
 from torch.nn import init
 
 
+# 计算两个矩阵之间的 Frobenius 范数距离，并归一化该距离
 def gdistance_fro(A1, A2):
     return torch.norm(A1 - A2, p="fro") / A1.numel()
 
@@ -336,25 +337,34 @@ class graph_constructor(nn.Module):
         self.static_feat = static_feat
 
     def forward(self, idx):
+        # 如果不存在静态特征，从嵌入层获取节点向量 nodevec1 和 nodevec2
         if self.static_feat is None:
             nodevec1 = self.emb1(idx)
             nodevec2 = self.emb2(idx)
+        # 如果存在静态特征，直接从静态特征中获取节点向量 nodevec1 和 nodevec2
         else:
             nodevec1 = self.static_feat[idx, :]
             nodevec2 = nodevec1
 
+        # 使用线性层 lin1 和 lin2 对节点向量进行变换，并通过 tanh 激活函数缩放
         nodevec1 = torch.tanh(self.alpha * self.lin1(nodevec1))
         nodevec2 = torch.tanh(self.alpha * self.lin2(nodevec2))
 
+        # 计算节点向量之间的相似度矩阵 a，并通过 tanh 和 relu 函数进行非线性变换
         a = torch.mm(nodevec1, nodevec2.transpose(1, 0)) - torch.mm(nodevec2, nodevec1.transpose(1, 0))
         adj = F.relu(torch.tanh(self.alpha * a))
+        # 创建掩码矩阵 mask
         mask = torch.zeros(idx.size(0), idx.size(0)).to(self.device)
         mask.fill_(float("0"))
+        # 使用 topk 函数选择每行中前 k 个最大的值及其索引
         s1, t1 = (adj + torch.rand_like(adj) * 0.01).topk(self.k, 1)
+        # 使用 scatter_ 函数将掩码矩阵对应位置设置为 1
         mask.scatter_(1, t1, s1.fill_(1))
+        # 将邻接矩阵与掩码矩阵相乘，保留前 k 个最大值的位置，其他位置为 0
         adj = adj * mask
         return adj
 
+    # 生成完整的邻接矩阵
     def fullA(self, idx):
         if self.static_feat is None:
             nodevec1 = self.emb1(idx)
@@ -370,6 +380,7 @@ class graph_constructor(nn.Module):
         adj = F.relu(torch.tanh(self.alpha * a))
         return adj
 
+    # 返回节点相似度矩阵
     def get_a(self, idx):
         if self.static_feat is None:
             nodevec1 = self.emb1(idx)
@@ -385,19 +396,31 @@ class graph_constructor(nn.Module):
 
 
 def sparse_graph(adj, idx, k):
+    # 创建一个大小为 [N, N] 的零矩阵 mask，其中 N 是节点数，adj 是邻接矩阵
     mask = torch.zeros(idx.size(0), idx.size(0)).to(adj.device)
+    # 使用 mask.fill_(float("0")) 将掩码矩阵填充为 0
     mask.fill_(float("0"))
+    # 给邻接矩阵 adj 添加一个很小的随机扰动 torch.rand_like(adj) * 0.01，以打破相同值的平衡
+    # 使用 topk(k, 1) 函数选择每行中前 k 个最大的值及其索引。s1 是前 k 个最大值，t1 是对应的索引
     s1, t1 = (adj + torch.rand_like(adj) * 0.01).topk(k, 1)
+    # 使用 scatter_ 函数将掩码矩阵 mask 的相应位置设置为 1
     mask.scatter_(1, t1, s1.fill_(1))
+    # 将邻接矩阵 adj 与掩码矩阵 mask 相乘，保留前 k 个最大值的位置，其他位置为 0
     adj = adj * mask
     return adj
 
 
 def dyna_sparse_graph(adj, idx, k):
+    # 创建一个大小为 [B, N, N] 的零矩阵 mask，其中 B 是批次大小，N 是节点数
     mask = torch.zeros(adj.size(0), idx.size(0), idx.size(0)).to(adj.device)
+    # 使用 mask.fill_(float("0")) 将掩码矩阵填充为 0
     mask.fill_(float("0"))
+    # 给邻接矩阵 adj 添加一个很小的随机扰动 torch.rand_like(adj) * 0.01，以打破相同值的平衡
+    # 使用 topk(k, 2) 函数选择每个矩阵中第 2 维度（列）中前 k 个最大的值及其索引。s1 是前 k 个最大值，t1 是对应的索引
     s1, t1 = (adj + torch.rand_like(adj) * 0.01).topk(k, 2)
+    # 使用 scatter_ 函数将掩码矩阵 mask 的相应位置设置为 1
     mask.scatter_(2, t1, s1.fill_(1))
+    # 将邻接矩阵 adj 与掩码矩阵 mask 相乘，保留前 k 个最大值的位置，其他位置为 0
     adj = adj * mask
     return adj
 

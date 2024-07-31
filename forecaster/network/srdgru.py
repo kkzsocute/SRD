@@ -44,12 +44,15 @@ class SRDGRU(nn.Module):
         device = torch.device("cuda:0" if use_cuda() else "cpu")
         Cell = get_cell(cell_type)
         subgraph_size = min(subgraph_size, input_size)
+        # 初始化静态图和动态图构造器
         self.gc = graph_constructor(input_size, subgraph_size, node_dim, device, alpha=tanhalpha, static_feat=None)
         self.dyna_gc = dyna_graph_constructor(input_size, subgraph_size, node_dim, device, alpha=tanhalpha)
+        # 定义图编码器和数据编码器
         self.graph_encoder = nn.Sequential(
             nn.Linear(1, node_dim), nn.LeakyReLU(), nn.GRU(node_dim, node_dim, batch_first=True)
         )
         self.encoder = nn.Sequential(nn.Linear(1, hidden_size), nn.LeakyReLU())
+        # 初始化动态和静态的回归编码器
         self.regressive_encoder_static = nn.ModuleList()
         self.regressive_encoder_dynamic = nn.ModuleList()
         for _ in range(num_layers):
@@ -99,6 +102,7 @@ class SRDGRU(nn.Module):
     def hidden_size(self):
         return self.__hidden_size
 
+    # 计算静态和动态的自适应图
     def get_adp(self, inputs, full=False):
         bs, temporal_dim, spatial_dim = inputs.size()
 
@@ -109,6 +113,7 @@ class SRDGRU(nn.Module):
         if full:
             return dyna_adp, static_adp
         else:
+            # 对动态自适应图和静态自适应图进行稀疏化处理
             dyna_adp = dyna_sparse_graph(dyna_adp, self.idx, self.subgraph_size)
             adp = sparse_graph(static_adp, self.idx, self.subgraph_size)
             return dyna_adp, adp
@@ -117,9 +122,11 @@ class SRDGRU(nn.Module):
         bs, temporal_dim, spatial_dim = inputs.size()
 
         # Graph Learning
+        # 使用静态图构造器生成静态自适应图
         static_adp = self.gc.fullA(self.idx)
         dyna_input = inputs.unsqueeze(1).transpose(2, 3)
         emb = self.graph_encoder(dyna_input.reshape(-1, temporal_dim, 1))[0][:, -1, :].reshape(bs, spatial_dim, -1)
+        # 使用动态图构造器生成动态自适应图
         dyna_adp = self.dyna_gc.fullA(self.idx, emb)
 
         # MinmaxLoss Calculation
@@ -129,9 +136,12 @@ class SRDGRU(nn.Module):
         self.minmax_loss_value = min_loss
 
         # Top-k
+        # 对动态自适应图进行稀疏化处理
         dyna_adp = dyna_sparse_graph(dyna_adp, self.idx, self.subgraph_size)
+        # 对静态自适应图进行稀疏化处理
         adp = sparse_graph(static_adp, self.idx, self.subgraph_size)
 
+        # 将输入 inputs 重新形状化为 [bs, temporal_dim * spatial_dim, 1]，然后通过编码器进行编码
         inputs = self.encoder(inputs.view(bs, -1, 1))  # bs, temporal_dim * spatial_dim, 1
         if self.spatial_embedding is not None:
             spatial_embedding = self.spatial_embedding(
@@ -148,6 +158,7 @@ class SRDGRU(nn.Module):
 
         # Spatial and Temporal Modules
         outs_static = outs_dyna = z
+        # 对每一层（self.num_layers）使用回归编码器处理静态和动态图
         for i in range(self.num_layers):
             outs_static = self.regressive_encoder_static[i](outs_static, adp)
             outs_dyna = self.regressive_encoder_dynamic[i](outs_dyna, dyna_adp)
